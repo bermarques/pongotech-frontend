@@ -7,13 +7,17 @@ import {
 } from "@/Components/ui/card";
 import { TypographyH1 } from "./styles";
 import ModalContainer, { Trigger } from "./modal";
+import { ModeToggle } from "@/Components/mode-toggle";
 
 const Home = () => {
   return (
     <ModalContainer>
-      <div className="flex gap-8">
-        <TypographyH1>Game Sessions</TypographyH1>
-        <Trigger />
+      <div className="flex justify-between">
+        <div className="flex gap-8">
+          <TypographyH1>Game Sessions</TypographyH1>
+          <Trigger />
+        </div>
+        <ModeToggle />
       </div>
       <div className="flex gap-4 flex-wrap">
         <Card className="w-[400px] shrink-0">
