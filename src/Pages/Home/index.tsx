@@ -6,11 +6,15 @@ import {
   CardTitle,
 } from "@/Components/ui/card";
 import { TypographyH1 } from "./styles";
+import ModalContainer, { Trigger } from "./modal";
 
 const Home = () => {
   return (
-    <>
-      <TypographyH1>Game Sessions</TypographyH1>
+    <ModalContainer>
+      <div className="flex gap-8">
+        <TypographyH1>Game Sessions</TypographyH1>
+        <Trigger />
+      </div>
       <div className="flex gap-4 flex-wrap">
         <Card className="w-[400px] shrink-0">
           <CardHeader>
@@ -85,7 +89,7 @@ const Home = () => {
           </CardContent>
         </Card>
       </div>
-    </>
+    </ModalContainer>
   );
 };
 
