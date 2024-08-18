@@ -21,6 +21,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
 import { ICreateSession } from "./types";
+import { useCreateSessionMutation } from "@/store/sdk/sessions";
 
 const formSchema = z.object({
   hostname: z.string().min(2, {
@@ -32,6 +33,8 @@ const formSchema = z.object({
 });
 
 const CreateSession: React.FC<ICreateSession> = ({ children }) => {
+  const [createSession] = useCreateSessionMutation();
+
   const {
     register,
     handleSubmit,
@@ -46,9 +49,11 @@ const CreateSession: React.FC<ICreateSession> = ({ children }) => {
     },
   });
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    await createSession(values);
     alert(JSON.stringify(values));
   };
+
   const handleClose = () => {
     reset();
   };

@@ -1,6 +1,6 @@
 export type ISession = {
   hostname: string;
-  players: number;
+  players: string;
   map: string;
   mode: string;
 };

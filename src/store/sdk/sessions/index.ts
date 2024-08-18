@@ -4,14 +4,17 @@ import { ISession } from "./types";
 export const sessionsApi = createApi({
   reducerPath: "sessionsApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://sessionapi.com/api/v1/sessions",
+    baseUrl: "/api/v1/sessions",
   }),
+  tagTypes: ["Sessions"],
   endpoints: (builder) => ({
-    getSessions: builder.query<ISession, undefined>({
+    getSessions: builder.query<ISession, ISession>({
       query: (name) => `${name}`,
     }),
-    createSession: builder.query<ISession, undefined>({
-      query: (name) => `${name}`,
+    createSession: builder.mutation<ISession, ISession>({
+      query(body) {
+        return { url: `post`, method: "POST", body };
+      },
     }),
   }),
 });
@@ -19,6 +22,5 @@ export const sessionsApi = createApi({
 export const {
   useGetSessionsQuery,
   useLazyGetSessionsQuery,
-  useCreateSessionQuery,
-  useLazyCreateSessionQuery,
+  useCreateSessionMutation,
 } = sessionsApi;
