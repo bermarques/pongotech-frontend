@@ -1,20 +1,25 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { createApi } from "@reduxjs/toolkit/query/react";
 import { ISession } from "./types";
+import { query, queryWithAxios } from "@/store/baseQuery";
+
+const getSessions = () =>
+  queryWithAxios("get", "/sessions", (data) => data, null);
+
+const addSession = (newSession: ISession) =>
+  queryWithAxios("post", "/sessions", (data) => data, { data: newSession });
+
+export const _sessionsSDK = { getSessions, addSession };
 
 export const sessionsApi = createApi({
   reducerPath: "sessionsApi",
-  baseQuery: fetchBaseQuery({
-    baseUrl: "/api/v1/sessions",
-  }),
-  tagTypes: ["Sessions"],
+  baseQuery: query(),
+  tagTypes: ["sessions"],
   endpoints: (builder) => ({
-    getSessions: builder.query<ISession, ISession>({
-      query: (name) => `${name}`,
+    getSessions: builder.query<ISession[], unknown>({
+      query: () => ({ url: "sessions", method: "get" }),
     }),
     createSession: builder.mutation<ISession, ISession>({
-      query(body) {
-        return { url: `post`, method: "POST", body };
-      },
+      query: (body) => ({ url: "sessions", method: "POST", body }),
     }),
   }),
 });
