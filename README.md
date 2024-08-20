@@ -1,50 +1,64 @@
-# React + TypeScript + Vite
+# Prerequisites
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Node.js (v14.x or higher)
 
-Currently, two official plugins are available:
+npm (v6.x or higher) or yarn (v1.x or higher)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+You can check if Node.js and npm/yarn are installed by running the following commands:
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+node -v
+npm -v
+# or
+yarn -v
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+# Installation
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Clone the repository to your local machine using the following command:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+git clone https://github.com/bermarques/pongotech-frontend.git
 ```
+
+Change into the directory of the cloned repository:
+
+```bash
+cd pongotech-frontend
+```
+
+Install all required dependencies using npm or yarn:
+
+```bash
+npm install
+
+# or
+
+yarn install
+```
+
+Once all dependencies are installed, you can run the application locally using the following steps:
+
+Start the React development server with the following command:
+
+```bash
+npm run dev
+
+# or
+
+yarn run dev
+```
+
+This will start the application in development mode. By default, it will be accessible at http://localhost:5173 in your web browser.
+
+# Technologies used
+
+React: A JavaScript library for building user interfaces.
+
+Tailwind CSS: CSS framework for building custom designs
+
+React Hook Form: A performant, flexible, and extensible form library.
+
+Redux Toolkit: The official, recommended way to write Redux logic.
+
+Zod: A TypeScript-first validation library.
