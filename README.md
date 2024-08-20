@@ -62,3 +62,5 @@ React Hook Form: A performant, flexible, and extensible form library.
 Redux Toolkit: The official, recommended way to write Redux logic.
 
 Zod: A TypeScript-first validation library.
+
+Vite: A fast build tool and development server for modern web projects, offering faster builds and hot module replacement (HMR).
